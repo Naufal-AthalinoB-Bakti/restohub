@@ -1,0 +1,28 @@
+type Pembayaran {
+  id: ID!
+  pesananId: ID!
+  jumlah: Float!
+  metode: String!
+  status: String!
+  tanggalDibuat: String!
+}
+
+type Query {
+  pembayaran(id: ID!): Pembayaran
+  daftarPembayaran: [Pembayaran!]!
+  pembayaranPesanan(pesananId: ID!): [Pembayaran!]!
+}
+
+type Mutation {
+  prosesPembayaran(pesananId: ID!, jumlah: Float!, metode: String!): Pembayaran!
+  updatePembayaran(
+    id: ID!
+    pesananId: ID
+    jumlah: Float
+    metode: String
+    status: String
+    tanggalDibuat: String
+  ): Pembayaran!
+  updateStatusPembayaran(id: ID!, status: String!): Pembayaran!
+  hapusPembayaran(id: ID!): Boolean!
+}
