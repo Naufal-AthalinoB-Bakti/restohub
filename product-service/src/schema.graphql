@@ -1,0 +1,34 @@
+scalar Upload
+
+type Product {
+  id: ID!
+  nama: String!
+  harga: Float!
+  deskripsi: String
+  kategori: String
+  gambar: String
+}
+
+type Query {
+  produk(id: ID!): Product
+  daftarProduk: [Product!]!
+}
+
+type Mutation {
+  buatProduk(
+    nama: String!
+    harga: Float!
+    deskripsi: String
+    kategori: String
+    gambar: Upload
+  ): Product!
+  updateProduk(
+    id: ID!
+    nama: String
+    harga: Float
+    deskripsi: String
+    kategori: String
+    gambar: Upload
+  ): Product!
+  hapusProduk(id: ID!): Boolean!
+}
